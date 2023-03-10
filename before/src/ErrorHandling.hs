@@ -20,4 +20,4 @@ errorHandling ("--window":x:xs) | not (all isDigit x) = False
                                 | otherwise = errorHandling xs
 errorHandling ("--move":x:xs)   | not (all isDigit x) = False
                                 | otherwise = errorHandling xs
-errorHandling _                  = False
+errorHandling (_:xs)            = False

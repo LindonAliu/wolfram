@@ -5,36 +5,26 @@
 ## FreeKOSOVO
 ##
 
-NAME		= wolfram
+NAME		= 		wolfram
 
-CC			:= ghc
+SRC			=		$(addprefix src/,		\
+					$(addsuffix .hs,		\
+						ErrorHandling		\
+						Rules				\
+						Conf				\
+						Wolfram				\
+						Main))				\
 
-SRCS		=	$(addprefix src/,		\
-				$(addsuffix .hs,		\
-					ErrorHandling		\
-					Rules				\
-					Conf				\
-					Wolfram				\
-					Main))				\
-
-OBJS		= $(SRCS:.hs=.o)
-
-RM			=	rm -f
-MV			=	mv
-
-GREEN		= '\033[0;32m'
-NO_COLOR	= '\033[0m'
+PATH_BIN	=		$(shell stack path --local-install-root)
 
 all:	$(NAME)
 
-$(NAME): $(SRCS)
-	@$ $(CC) -o $(NAME) $(SRCS)
-	@printf "$(CC) -o $(NAME) $(SRCS)\
-	["$(GREEN)"COMPILING OK"$(NO_COLOR)"]\n"
+$(NAME):
+	stack build
+	cp $(PATH_BIN)/bin/$(NAME) .
 
 clean:
-	$(RM) $(OBJS)
-	$(RM) src/*.hi
+	stack purge
 
 fclean: clean
 	$(RM) $(NAME)
