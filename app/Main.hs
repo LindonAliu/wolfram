@@ -24,3 +24,4 @@ main = getArgs >>= arguments
         arguments (x:xs)  = case getOpts defaultConf (x:xs) of
                               Just conf -> wolfram conf
                               Nothing -> exitWith (ExitFailure 84)
+        arguments _       = exitWith (ExitFailure 84)

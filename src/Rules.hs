@@ -16,6 +16,7 @@ rule30 0 1 1 = 1
 rule30 0 1 0 = 1
 rule30 0 0 1 = 1
 rule30 0 0 0 = 0
+rule30 _ _ _ = 0
 
 rule90 :: Int -> Int -> Int -> Int
 rule90 1 1 1 = 0
@@ -26,6 +27,7 @@ rule90 0 1 1 = 1
 rule90 0 1 0 = 0
 rule90 0 0 1 = 0
 rule90 0 0 0 = 0
+rule90 _ _ _ = 0
 
 rule110 :: Int -> Int -> Int -> Int
 rule110 1 1 1 = 0
@@ -36,3 +38,4 @@ rule110 0 1 1 = 1
 rule110 0 1 0 = 1
 rule110 0 0 1 = 1
 rule110 0 0 0 = 0
+rule110 _ _ _ = 0
