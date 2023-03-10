@@ -14,6 +14,7 @@ SRCS		=	$(addprefix src/,		\
 					ErrorHandling		\
 					Rules				\
 					Conf				\
+					Wolfram				\
 					Main))				\
 
 OBJS		= $(SRCS:.hs=.o)
