@@ -1,9 +1,9 @@
---
+{--
 -- EPITECH PROJECT, 2023
 -- Conf
 -- File description:
 -- FreeKOSOVO
---
+--}
 
 module Conf (Conf(..), defaultConf, getOpts) where
 
@@ -23,9 +23,14 @@ defaultConf = Conf { rule = Nothing,
 
 getOpts :: Conf -> [String] -> Maybe Conf
 getOpts conf [] = Just conf
-getOpts conf (x:xs) | x == "--rule" = getOpts (conf { rule = Just (read (head xs) :: Int) }) (tail xs)
-                    | x == "--start" = getOpts (conf { start = read (head xs) :: Int }) (tail xs)
-                    | x == "--lines" = getOpts (conf { line = Just (read (head xs) :: Int) }) (tail xs)
-                    | x == "--window" = getOpts (conf { window = read (head xs) :: Int }) (tail xs)
-                    | x == "--move" = getOpts (conf { move = Just (read (head xs) :: Int) }) (tail xs)
-                    | otherwise = Nothing
+getOpts conf ("--rule":xs) = getOpts (conf {
+                             rule = Just (read (head xs) :: Int) }) (tail xs)
+getOpts conf ("--start":xs) = getOpts (conf {
+                              start = read (head xs) :: Int }) (tail xs)
+getOpts conf ("--lines":xs) = getOpts (conf {
+                              line = Just (read (head xs) :: Int) }) (tail xs)
+getOpts conf ("--window":xs) = getOpts (conf {
+                               window = read (head xs) :: Int }) (tail xs)
+getOpts conf ("--move":xs) = getOpts (conf {
+                             move = Just (read (head xs) :: Int) }) (tail xs)
+getOpts _ _ = Nothing
