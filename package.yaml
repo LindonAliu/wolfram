@@ -37,7 +37,7 @@ library:
   source-dirs: src
 
 executables:
-  wolfram:
+  wolfram-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
