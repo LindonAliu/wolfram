@@ -15,6 +15,7 @@ import System.Exit (exitWith, ExitCode (ExitFailure))
 import Conf (defaultConf, getOpts)
 import ErrorHandling (errorHandling)
 import Wolfram (wolfram)
+import Lib (makeFirstLine)
 
 main :: IO ()
 main = getArgs >>= arguments
@@ -22,6 +23,6 @@ main = getArgs >>= arguments
         arguments (x:xs)  | not (errorHandling (x:xs)) =
                               exitWith (ExitFailure 84)
         arguments (x:xs)  = case getOpts defaultConf (x:xs) of
-                              Just conf -> wolfram conf
+                              Just conf -> wolfram conf 0 (makeFirstLine conf)
                               Nothing -> exitWith (ExitFailure 84)
         arguments _       = exitWith (ExitFailure 84)
