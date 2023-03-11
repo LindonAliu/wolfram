@@ -7,21 +7,14 @@
 
 NAME		= 		wolfram
 
-SRC			=		$(addprefix src/,		\
-					$(addsuffix .hs,		\
-						ErrorHandling		\
-						Rules				\
-						Conf				\
-						Wolfram				\
-						Main))				\
-
 PATH_BIN	=		$(shell stack path --local-install-root)
 
 all:	$(NAME)
 
 $(NAME):
 	stack build
-	cp $(PATH_BIN)/bin/$(NAME) .
+	cp $(PATH_BIN)/bin/wolfram-exe .
+	mv wolfram-exe $(NAME)
 
 clean:
 	stack purge
