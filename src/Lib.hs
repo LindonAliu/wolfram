@@ -10,11 +10,11 @@ import Conf (Conf(..))
 
 makeFirstLine :: Conf -> [Char]
 makeFirstLine (Conf _ _ _ win mov)  | 
-    (win `mod` 2) == 0 =    replicate ((win + mov) `div` 2) ' ' ++ ['*'] ++
-                            replicate ((win - mov) `div` 2 - 1) ' '
+    (win `mod` 2) == 0 =    replicate (win `div` 2 + mov) ' ' ++ ['*'] ++
+                            replicate (win `div` 2 - 1 - mov) ' '
                                     |
-    otherwise =             replicate ((win + mov) `div` 2) ' ' ++ ['*'] ++
-                            replicate ((win - mov) `div` 2) ' '
+    otherwise =             replicate (win `div` 2 + mov) ' ' ++ ['*'] ++
+                            replicate (win `div` 2 - mov) ' '
 
 deleteIFirstChar :: String -> Int -> String
 deleteIFirstChar str i = drop i str
