@@ -43,7 +43,7 @@ applicateRule [] _ = []
 -- Elle prend en paramètre la configuration, l'indice de la ligne et la chaîne
 --    de caractères à afficher.
 wolfram :: Conf -> Int -> String -> IO ()
-wolfram (Conf (-1) _ _ _ _) _ _ = exitWith (ExitFailure 84)
+wolfram (Conf r _ _ _ _) _ _ | r < 0 || r > 255 = exitWith (ExitFailure 84)
 wolfram (Conf _ _ 0 _ _) _ _ = return ()
 wolfram (Conf r 0 l w m) i str = printLine str i >>
    wolfram (Conf r 0 (l - 1) w m) (i + 1)
