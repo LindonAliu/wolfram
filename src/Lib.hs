@@ -11,7 +11,7 @@ import Conf (Conf(..))
 makeFirstLine :: Conf -> [Char]
 makeFirstLine (Conf _ _ _ win mov)  | 
     (win `mod` 2) == 0 =    replicate (win `div` 2 + mov) ' ' ++ ['*'] ++
-                            replicate (win `div` 2 - 1 - mov) ' '
+                            replicate (win `div` 2 - (1 - mov)) ' '
                                     |
     otherwise =             replicate (win `div` 2 + mov) ' ' ++ ['*'] ++
                             replicate (win `div` 2 - mov) ' '
