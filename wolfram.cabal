@@ -28,7 +28,6 @@ library
       Conf
       ErrorHandling
       Lib
-      Rules
       Wolfram
   other-modules:
       Paths_wolfram
